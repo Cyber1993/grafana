@@ -35,3 +35,17 @@ dashboard:    snmp
    25  docker ps | grep prometheus | awk '{print $1}' | xargs docker kill -s SIGHUP
    26  history 20
 
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+
+
+
