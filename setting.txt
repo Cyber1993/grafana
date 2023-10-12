@@ -10,5 +10,28 @@ Add these three lines to the bottom of /var/lib/docker/volumes/monitoring_prom-c
 Reload prometheus config via this command:
 docker ps | grep prometheus | awk '{print $1}' | xargs docker kill -s SIGHUP
 
-Import this dashboard: https://grafana.com/grafana/dashboards/1860 to grafana.
+
+dashboard: 1860   linux
+
+********************************************************************************
+
+dashboard:    snmp
+
+   10  mkdir snmp
+   11  cd snmp/
+   12  wget https://github.com/prometheus/snmp_exporter/releases/download/v0.22.0/snmp_exporter-0.22.0.linux-amd64.tar.gz
+   13  ls
+   14  tar xzf snmp_exporter-0.22.0.linux-amd64.tar.gz
+   15  ls
+   16  mv snmp_exporter-0.22.0.linux-amd64 /etc/snmp_exporter
+   17  ls
+   18  nano /etc/systemd/system/snmp_exporter.service
+   19  systemctl daemon-reload
+   20  systemctl restart snmp_exporter
+   21  systemctl enable snmp_exporter
+   22  systemctl status snmp_exporter
+   23  nano /etc/prometheus/prometheus.yml
+   24  nano /var/lib/docker/volumes/monitoring_prom-configs/_data/prometheus.yml
+   25  docker ps | grep prometheus | awk '{print $1}' | xargs docker kill -s SIGHUP
+   26  history 20
 
